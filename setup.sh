@@ -1,5 +1,6 @@
 ######################## Começa inicialização de telas ########################
 
+exec 2> /dev/null
 
 ####################### Inicia WorkSpace 0 ####################################
 
@@ -12,7 +13,6 @@ while [ "$WID" == "" ]; do
     WID=$(wmctrl -lp | sort -k2 | grep -i "eyeBeam" | awk '{print $1, $2}' | grep -P "^\d{1}x(\d|[a-fA-F])+\s0" | awk '{print $1}' )
 done
 wmctrl -i -r $WID -b add,hidden,below
-sleep 2
 
 ############## Fim Eyebeam ##############
 
@@ -24,16 +24,13 @@ while [ "$WID" == "" ]; do
     WID=$(wmctrl -lp | sort -k2 | grep -i "Mozilla Firefox" | awk '{print $1, $2}' | grep -P "^\d{1}x(\d|[a-fA-F])+\s0" | awk '{print $1}' )
 done
 wmctrl -i -r $WID -e 0,1367,102,1920,1016
-sleep 2
 
 ############## Fim Firefox ##############
 
 ############# Inicia procs com terminator #############
 
 terminator --geometry=683x731+1+120 #Segundo monitor - terminator da esquerda
-sleep 2
 terminator --geometry=683x731+693+120 -l terminator_direita #Segundo monitor - terminator da direita
-sleep 2
 
 ############## Fim terminator ##############
 
@@ -51,9 +48,7 @@ firefox --new-window "localhost/nube" &>/dev/null &
 while [ "$WID" == "" ]; do
     WID=$( wmctrl -lp | sort -k2 | grep -i "Mozilla Firefox" | awk '{print $1, $2}' | grep -P "^\d{1}x(\d|[a-fA-F])+\s1" | awk '{print $1}' )
 done
-echo $WID
 wmctrl -i -r $WID -e 0,1367,102,1920,1016
-sleep 2
 
 ############## Fim Firefox ##############
 
@@ -71,9 +66,7 @@ sublime_text &>/dev/null &
 while [ "$WID" == "" ]; do
     WID=$( wmctrl -lp | sort -k2 | grep -i "Sublime Text" | awk '{print $1, $2}' | grep -P "^\d{1}x(\d|[a-fA-F])+\s2" | awk '{print $1}' )
 done
-echo $WID
 wmctrl -i -r $WID -e 0,1367,102,1920,1016
-sleep 2
 
 ############## Fim Sublime ##############
 
@@ -85,14 +78,14 @@ sleep 2
 wmctrl -s 3
 
 ############# Inicia procs com PGAdmin #############
+
 WID=""
 pgadmin3 -s "pgserver" &>/dev/null &
 while [ "$WID" == "" ]; do
     WID=$( wmctrl -lp | sort -k2 | grep -i "pgAdmin III" | awk '{print $1, $2}' | grep -P "^\d{1}x(\d|[a-fA-F])+\s3" | awk '{print $1}' )
 done
-echo $WID
 wmctrl -i -r $WID -e 0,1367,102,960,1016
-sleep 2
+
 ############## Fim PGAdmin ##############
 
 ######################## Fim WorkSpace 3 ######################################
@@ -103,14 +96,13 @@ sleep 2
 wmctrl -s 4
 
 ############# Inicia procs com Thunderbird #############
+
 WID=""
 thunderbird &>/dev/null &
 while [ "$WID" == "" ]; do
     WID=$( wmctrl -lp | sort -k2 | grep -i "Mozilla Thunderbird" | awk '{print $1, $2}' | grep -P "^\d{1}x(\d|[a-fA-F])+\s4" | awk '{print $1}' )
 done
-echo $WID
 wmctrl -i -r $WID -e 0,1367,102,1920,1016
-sleep 2
 
 ############## Fim Thunderbird ##############
 
@@ -128,9 +120,7 @@ firefox "youtube.com" "trello.com" &>/dev/null &
 while [ "$WID" == "" ]; do
     WID=$( wmctrl -lp | sort -k2 | grep -i "Mozilla Firefox" | awk '{print $1, $2}' | grep -P "^\d{1}x(\d|[a-fA-F])+\s5" | awk '{print $1}' )
 done
-echo $WID
 wmctrl -i -r $WID -e 0,1376,109,960,1016
-sleep 2
 
 ############## Fim Firefox ##############
 
@@ -144,7 +134,6 @@ wmctrl -s 6
 ############# Inicia procs com Terminator #############
 
 terminator --geometry=1920x1016+1367+102 -l terminator_webserver
-sleep 2
 
 ############## Fim Terminator ##############
 
@@ -162,7 +151,6 @@ spotify &>/dev/null &
 while [ "$WID" == "" ]; do
     WID=$( wmctrl -lp | sort -k2 | grep -i "Spotify" | awk '{print $1, $2}' | grep -P "^\d{1}x(\d|[a-fA-F])+\s7" | awk '{print $1}' )
 done
-echo $WID
 wmctrl -i -r $WID -e 0,1367,102,1920,1016
 
 ############## Fim Spotify ##############

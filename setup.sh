@@ -170,3 +170,4 @@ else
     if [ ${#sbotools} -gt 0 ]; then
         echo -e "Foi identificado que você possui SBOtools.\nComo root execute \"sboinstall wmctrl\"."
     fi
+fi

@@ -1,9 +1,12 @@
+#!/bin/bash
+
 ######################## Começa inicialização de telas ########################
 
 wmctrl_pkg=$(ls /var/log/packages | grep wmctrl)
 
 if [ ${#wmctrl_pkg} -gt 0 ]; then
 
+    exec 3>&2
     exec 2> /dev/null
 
     ####################### Inicia WorkSpace 0 ####################################
@@ -164,6 +167,8 @@ if [ ${#wmctrl_pkg} -gt 0 ]; then
     wmctrl -s 0 # Volta para o primeiro workspace
 
     ######################### Fim inicialização de telas ##########################
+
+    exec 2>&3
 else
     echo -e "É necessário instalar o pacote \"wmctrl\""
 
